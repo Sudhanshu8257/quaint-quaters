@@ -14,7 +14,7 @@ const page = async ({ searchParams }: { searchParams: { q?: string } }) => {
   return (
     <div className="w-full flex max-md:flex-col gap-2 mt-4">
       <div className="h-fit w-48 md:sticky md:top-28  rounded-lg flex flex-col gap-1 items-start justify-center max-md:w-full bg-white">
-        <span className="text-lg max-md:text-base mt-2 ml-2">Categories</span>
+        <span className="text-lg max-md:text-base mt-2 ml-2">Authors</span>
         <Link
           href={"/quotes"}
           className={`font-bold w-full p-2 hover:bg-primary ${
