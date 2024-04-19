@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="px-4 flex flex-col items-center gap-4 justify-center h-full w-full text-center">
+    <main className="px-4 flex flex-col items-center gap-4 justify-center h-[80vh] w-full text-center">
       <h1 className="text-primary-foreground  font-black md:text-2xl text-lg">
         Welcome to Quant Quarters: Discover Quotes, Proverbs, and Dialogues
       </h1>
