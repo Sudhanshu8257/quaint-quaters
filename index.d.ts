@@ -1,3 +1,9 @@
+export type Route = {
+  id: number;
+  route: string;
+  label: string;
+};
+
 export type Quote = {
   id: number;
   text: string;

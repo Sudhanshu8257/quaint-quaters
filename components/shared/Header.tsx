@@ -3,56 +3,59 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
+import { Route } from "@/index";
 
 const Header = () => {
   const pathname = usePathname();
-  const navLinks = (
-    <>
-      <Link
-        className={`${
-          pathname === "/quotes" ? "font-black" : "font-semibold"
-        } `}
-        href={"/quotes"}
-      >
-        Quotes
-      </Link>
-      <Link
-        className={`${
-          pathname === "/proverbs" ? "font-black" : "font-semibold"
-        } `}
-        href={"/proverbs"}
-      >
-        Proverbs
-      </Link>
-      <Link
-        className={`${
-          pathname === "/dialogues" ? "font-black" : "font-semibold"
-        } `}
-        href={"/dialogues"}
-      >
-        Dialogues
-      </Link>
-    </>
-  );
-
+  const routes : Route[] = [
+    { id: 1, route: "/quotes", label: "Quotes" },
+    { id: 2, route: "/proverbs", label: "Proverbs" },
+    { id: 3, route: "/dialogues", label: "Dialogues" },
+  ];
   return (
     <nav className="bg-white w-full rounded-md sticky top-4 min-h-16 py-2 px-4 flex items-center justify-between">
       <Link href={"/"} className="text-primary text-lg font-black ">
         QuaintQuarters
       </Link>
       <div className="flex items-center justify-center gap-4 max-md:hidden">
-        {navLinks}
+        {routes?.map((route) => (
+          <Link
+            key={route.id}
+            className={`${
+              pathname === route.route ? "font-black" : "font-semibold"
+            }  capitalize`}
+            href={route.route}
+          >
+            {route.label}
+          </Link>
+        ))}
       </div>
       <Sheet>
         <SheetTrigger className="md:hidden">
           <MenuIcon />
         </SheetTrigger>
         <SheetContent>
-          <div className="flex flex-col mt-4 gap-4">{navLinks}</div>
+          {routes?.map((route) => (
+            <SheetClose
+              asChild
+              key={route.id}
+              className="flex flex-col mt-4 gap-4"
+            >
+              <Link
+                className={`${
+                  pathname === route.route ? "font-black" : "font-semibold"
+                }  capitalize`}
+                href={route.route}
+              >
+                {route.label}
+              </Link>
+            </SheetClose>
+          ))}
         </SheetContent>
       </Sheet>
     </nav>
